@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CampusCare API Test</title>
+</head>
+
+<body>
+
+    <button onclick="register()">Register</button>
+
+    <script>
+        async function register() {
+
+            const response = await fetch("http://localhost:5000/api/auth/register", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    studentId: "STU001",
+                    fullName: "Mg Mg",
+                    email: "mgmg@example.com",
+                    phone: "09123456789",
+                    password: "Password123",
+                    department: "Computer Science",
+                    academicYear: "Fourth Year"
+                })
+
+            });
+
+            const data = await response.json();
+
+            console.log(data);
+
+            alert(JSON.stringify(data, null, 2));
+        }
+    </script>
+
+</body>
+
+</html>

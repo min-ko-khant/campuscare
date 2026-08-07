@@ -1,0 +1,224 @@
+/* =====================================
+   News List Page
+===================================== */
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 12% 10%,
+            rgba(124, 227, 255, 0.16),
+            transparent 24%
+        ),
+        linear-gradient(
+            180deg,
+            #f5faff 0%,
+            #edf7ff 100%
+        );
+}
+
+.news-page {
+    padding: 100px 0;
+}
+
+.page-header {
+    max-width: 760px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.page-header .section-badge {
+    display: inline-flex;
+    margin-bottom: 16px;
+}
+
+.page-header h1 {
+    margin: 0;
+    color: #1e3a5f;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+}
+
+.page-header p {
+    margin: 18px 0 0;
+    color: #64748b;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.news-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(79, 157, 255, 0.15);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 18px 45px rgba(31, 95, 170, 0.1);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(79, 157, 255, 0.36);
+    box-shadow: 0 28px 60px rgba(31, 95, 170, 0.17);
+}
+
+.news-image {
+    position: relative;
+    height: 230px;
+    overflow: hidden;
+    background: #dff4ff;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.06);
+}
+
+.news-category {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 2;
+    padding: 7px 14px;
+    border-radius: 999px;
+    color: #1765bd;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 22px rgba(25, 91, 170, 0.14);
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.news-content {
+    padding: 25px;
+}
+
+.news-date {
+    display: block;
+    color: #5f7b99;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.news-content h3 {
+    margin: 14px 0 12px;
+    color: #1e3a5f;
+    font-size: 1.35rem;
+    line-height: 1.35;
+    letter-spacing: -0.025em;
+}
+
+.news-content p {
+    min-height: 82px;
+    margin: 0 0 22px;
+    overflow: hidden;
+    color: #64748b;
+    line-height: 1.7;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+
+    line-clamp: 3;
+}
+
+.news-footer {
+    padding-top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid rgba(30, 58, 95, 0.08);
+}
+
+.news-meta {
+    color: #6c8196;
+    font-size: 0.82rem;
+}
+
+.news-footer a {
+    flex-shrink: 0;
+    color: #1765bd;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.news-footer a:hover {
+    color: #0b54b3;
+    transform: translateX(3px);
+}
+
+.news-loading,
+.news-empty,
+.news-error {
+    grid-column: 1 / -1;
+    padding: 60px 30px;
+    border-radius: 24px;
+    text-align: center;
+}
+
+.news-empty h2,
+.news-error h2 {
+    margin-bottom: 10px;
+    color: #1e3a5f;
+}
+
+.news-empty p,
+.news-error p {
+    color: #64748b;
+}
+
+@media (max-width: 1050px) {
+    .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .news-page {
+        padding: 75px 0;
+    }
+
+    .page-header {
+        margin-bottom: 42px;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-image {
+        height: 220px;
+    }
+}
+
+@media (max-width: 420px) {
+    .news-content {
+        padding: 21px;
+    }
+
+    .news-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

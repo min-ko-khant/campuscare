@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="CampusCare Smart Campus Communication and Issue Management Platform" />
+
+    <title>CampusCare | Smart Campus Platform</title>
+
+    <link rel="stylesheet" href="./css/output.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/pages/home.css" />
+</head>
+
+<body>
+    <header class="site-header" id="siteHeader">
+        <div class="container">
+            <nav class="navbar glass" aria-label="Primary navigation">
+                <a href="./index.html" class="brand" aria-label="CampusCare home">
+                    <span class="brand-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.8 8.2 12 3l9.2 5.2L12 13.4 2.8 8.2Z" fill="currentColor" />
+                            <path d="M6.5 10.7v5.1c0 1.8 2.5 3.2 5.5 3.2s5.5-1.4 5.5-3.2v-5.1L12 13.8l-5.5-3.1Z"
+                                fill="currentColor" opacity=".78" />
+                            <path d="M21.2 8.4v5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                        </svg>
+                    </span>
+
+                    <span class="brand-name">CampusCare</span>
+                </a>
+
+                <div class="desktop-nav">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#news" class="nav-link">News</a>
+                    <a href="#events" class="nav-link">Events</a>
+                    <a href="#activities" class="nav-link">Activities</a>
+                    <a href="#notices" class="nav-link">Notices</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <div class="navbar-actions">
+                    <button type="button" class="icon-button search-button" id="searchButton" aria-label="Open search">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor"
+                                stroke-width="1.9" stroke-linecap="round" />
+                        </svg>
+                    </button>
+
+                    <a href="./pages/auth/login.html" class="login-button">
+                        Login
+                    </a>
+
+                    <button type="button" class="mobile-menu-button" id="mobileMenuButton"
+                        aria-label="Open navigation menu" aria-controls="mobileMenu" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <div class="mobile-menu glass" id="mobileMenu">
+            <a href="#home" class="mobile-nav-link active">Home</a>
+            <a href="#news" class="mobile-nav-link">News</a>
+            <a href="#events" class="mobile-nav-link">Events</a>
+            <a href="#activities" class="mobile-nav-link">Activities</a>
+            <a href="#notices" class="mobile-nav-link">Notices</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+
+            <a href="./pages/auth/login.html" class="mobile-login-button">
+                Login
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        Welcome to CampusCare
+                    </div>
+
+                    <h1 class="hero-title">
+                        Your Campus,
+                        <span>Our Care</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Important campus updates, events, activities,
+                        announcements and exam notices—all in one smart platform.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#news" class="primary-button">
+                            Explore Campus
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                        <a href="#news" class="secondary-button">
+                            View Latest News
+                        </a>
+                    </div>
+
+                    <div class="hero-statistics glass">
+                        <article class="stat-item">
+                            <div class="stat-icon">👥</div>
+                            <div>
+                                <strong>12,500+</strong>
+                                <span>Students</span>
+                            </div>
+                        </article>
+
+                        <article class="stat-item">
+                            <div class="stat-icon">📅</div>
+                            <div>
+                                <strong>320+</strong>
+                                <span>Events</span>
+                            </div>
+                        </article>
+
+                        <article class="stat-item">
+                            <div class="stat-icon">📢</div>
+                            <div>
+                                <strong>150+</strong>
+                                <span>Notices</span>
+                            </div>
+                        </article>
+
+                        <article class="stat-item">
+                            <div class="stat-icon">🕘</div>
+                            <div>
+                                <strong>24/7</strong>
+                                <span>Support</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="hero-visual" aria-label="CampusCare illustration">
+                    <div class="hero-glow"></div>
+
+                    <div class="campus-orb">
+                        <div class="building-card glass">
+                            <div class="building-top">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <div class="building-label">CAMPUS</div>
+
+                            <div class="building-grid">
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+
+                        <div class="student-group">
+                            <article class="student-card glass">
+                                <div class="student-avatar avatar-one">A</div>
+                                <div class="student-device"></div>
+                            </article>
+
+                            <article class="student-card student-card-main glass">
+                                <div class="student-avatar avatar-two">M</div>
+                                <div class="student-laptop">
+                                    <span>CampusCare</span>
+                                </div>
+                            </article>
+
+                            <article class="student-card glass">
+                                <div class="student-avatar avatar-three">K</div>
+                                <div class="student-device"></div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="floating-icon floating-icon-one">🎓</div>
+                    <div class="floating-icon floating-icon-two">🔔</div>
+                    <div class="floating-icon floating-icon-three">📅</div>
+                    <div class="floating-icon floating-icon-four">📖</div>
+
+                    <span class="floating-bubble bubble-one"></span>
+                    <span class="floating-bubble bubble-two"></span>
+                    <span class="floating-bubble bubble-three"></span>
+                </div>
+            </div>
+
+            <div class="hero-wave" aria-hidden="true"></div>
+        </section>
+
+        <!-- =========================
+        Campus Statistics
+        ========================= -->
+        <section class="statistics-section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-badge">
+                        Campus Statistics
+                    </span>
+
+                    <h2>
+                        Empowering Campus Life With Smart Technology
+                    </h2>
+
+                    <p>
+                        Thousands of students, teachers and administrators
+                        are connected through CampusCare every day.
+                    </p>
+
+                </div>
+
+                <div class="statistics-grid">
+
+                    <article class="statistics-card glass">
+
+                        <div class="statistics-icon">
+                            👨‍🎓
+                        </div>
+
+                        <h3 class="counter" data-target="12500">
+                            0
+                        </h3>
+
+                        <p>
+                            Active Students
+                        </p>
+
+                    </article>
+
+                    <article class="statistics-card glass">
+
+                        <div class="statistics-icon">
+                            📅
+                        </div>
+
+                        <h3 class="counter" data-target="320">
+                            0
+                        </h3>
+
+                        <p>
+                            Campus Events
+                        </p>
+
+                    </article>
+
+                    <article class="statistics-card glass">
+
+                        <div class="statistics-icon">
+                            🛠️
+                        </div>
+
+                        <h3 class="counter" data-target="987">
+                            0
+                        </h3>
+
+                        <p>
+                            Issues Resolved
+                        </p>
+
+                    </article>
+
+                    <article class="statistics-card glass">
+                        <div class="statistics-icon">📢</div>
+                        <h3 class="counter" data-target="150">
+                            0
+                        </h3>
+                        <p>Official Notices</p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+        Important Announcement
+        ========================= -->
+        <section class="announcement-section" id="announcements">
+            <div class="container">
+
+                <div class="announcement-card glass">
+
+                    <div class="announcement-left">
+
+                        <div class="announcement-icon">
+                            📢
+                        </div>
+
+                        <div class="announcement-content">
+
+                            <span class="announcement-badge" id="announcementType">
+                                Important Announcement
+                            </span>
+
+                            <h2 id="announcementTitle">
+                                Loading announcement...
+                            </h2>
+
+                            <p id="announcementDescription">
+                                Please wait while the latest announcement is loading.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="announcement-right">
+
+                        <div class="deadline-card">
+
+                            <span>Deadline</span>
+
+                            <h3 id="announcementDeadline">
+                                --
+                            </h3>
+
+                        </div>
+
+                        <a href="#" class="announcement-button" id="announcementDetailsButton">
+                            View Details →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =========================
+        Latest News
+        ========================= -->
+        <section class="latest-news-section" id="news">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-badge">
+                        Latest News
+                    </span>
+
+                    <h2>
+                        Stay Updated With Campus News
+                    </h2>
+
+                    <p>
+                        Read the latest announcements, academic updates,
+                        exam notices and campus activities.
+                    </p>
+
+                </div>
+
+                <div class="news-grid">
+                    <div class="news-grid">
+                        <div class="news-loading-state glass">
+                            <p>Loading latest news...</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+     Upcoming Events
+        ========================= -->
+        <section class="events-section" id="events">
+            <div class="container">
+
+                <div class="events-heading">
+                    <div class="section-header events-header">
+                        <span class="section-badge">Upcoming Events</span>
+
+                        <h2>Discover What’s Happening on Campus</h2>
+
+                        <p>
+                            Explore workshops, competitions, seminars and student
+                            activities happening across the campus.
+                        </p>
+                    </div>
+
+                    <a href="./pages/public/events.html" class="view-all-events">
+                        View All Events
+                        <span aria-hidden="true">→</span>
+                    </a>
+
+
+                    <div class="events-timeline" id="eventsContainer">
+
+                        <div class="events-loading glass">
+                            Loading upcoming events...
+                        </div>
+
+                    </div>
+                </div>
+        </section>
+
+        <!-- =========================
+     Campus Activities
+========================= -->
+        <section class="activities-section" id="activities">
+
+            <div class="container">
+
+                <div class="activities-header">
+
+                    <div class="section-header">
+
+                        <span class="section-badge">
+                            Campus Activities
+                        </span>
+
+                        <h2>
+                            Discover Student Life Beyond the Classroom
+                        </h2>
+
+                        <p>
+                            Join clubs, competitions, workshops and community programs
+                            to enhance your university experience.
+                        </p>
+
+                    </div>
+
+                    <a href="./pages/public/activities.html" class="view-all-btn">
+                        View All →
+                    </a>
+
+                </div>
+
+                <div class="activities-grid" id="activitiesContainer">
+                    <div class="activities-loading glass">
+                        Loading campus activities...
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+     Exam Notices
+========================= -->
+        <section class="exam-notices-section" id="notices">
+            <div class="container">
+
+                <div class="exam-notices-header">
+                    <div class="section-header exam-heading">
+                        <span class="section-badge">Exam Notices</span>
+
+                        <h2>Important Examination Updates</h2>
+
+                        <p>
+                            Check examination schedules, room assignments, registration
+                            deadlines and other important academic information.
+                        </p>
+                    </div>
+
+                    <a href="./pages/public/news.html" class="view-all-btn">
+
+                        View All →
+
+                    </a>
+                </div>
+
+                <div class="exam-layout">
+
+                    <div class="exam-timeline" id="examNoticesContainer">
+                        <div class="exam-notices-loading glass">
+                            Loading exam notices...
+                        </div>
+                    </div>
+
+                    <aside class="exam-summary-card glass">
+                        <div class="exam-summary-icon">📅</div>
+
+                        <span class="exam-summary-label">
+                            Next Examination
+                        </span>
+
+                        <h3 id="nextExamTitle">
+                            Loading...
+                        </h3>
+
+                        <div class="exam-summary-date">
+                            <strong id="nextExamDay">--</strong>
+                            <span id="nextExamMonthYear">--</span>
+                        </div>
+
+                        <div class="exam-summary-countdown" id="examCountdown">
+                            <div>
+                                <strong>--</strong>
+                                <span>Days</span>
+                            </div>
+                        </div>
+
+                        <a href="#" class="exam-summary-button" id="nextExamDownload">
+                            Download Schedule
+                        </a>
+                    </aside>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+     Emergency Notice
+========================= -->
+        <section class="emergency-section">
+            <div class="container">
+
+                <div class="emergency-banner glass" id="emergencyBanner">
+                    <div class="emergency-left">
+
+                        <div class="emergency-icon">
+                            🚨
+                        </div>
+
+                        <div class="emergency-content">
+
+                            <span class="emergency-badge" id="emergencyLevel">
+                                Loading...
+                            </span>
+
+                            <h2 id="emergencyTitle">
+                                Loading emergency notice...
+                            </h2>
+
+                            <p id="emergencyDescription">
+                                Please wait while the latest notice is loading.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="emergency-right">
+
+                        <a href="#" class="emergency-button" id="emergencyDetailsButton">
+                            Learn More →
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================
+        Footer
+====================================== -->
+
+        <footer class="footer" id="contact">
+
+            <!-- Wave Divider -->
+
+            <div class="footer-wave">
+
+                <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+
+                    <path fill="#ffffff"
+                        d="M0,64L80,69.3C160,75,320,85,480,90.7C640,96,800,96,960,80C1120,64,1280,32,1360,16L1440,0L1440,120L0,120Z">
+                    </path>
+
+                </svg>
+
+            </div>
+
+            <div class="container">
+
+                <div class="footer-grid">
+
+                    <!-- Brand -->
+
+                    <div class="footer-column">
+
+                        <h2 class="footer-logo">
+                            CampusCare
+                        </h2>
+
+                        <p>
+
+                            Smart Campus Communication &
+                            Issue Management Platform.
+
+                        </p>
+
+                        <div class="footer-social">
+
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                            <a href="#"><i class="fab fa-github"></i></a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Quick Links -->
+
+                    <div class="footer-column">
+
+                        <h3>Quick Links</h3>
+
+                        <ul>
+
+                            <li><a href="#">Home</a></li>
+
+                            <li><a href="#">News</a></li>
+
+                            <li><a href="#">Events</a></li>
+
+                            <li><a href="#">Activities</a></li>
+
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Resources -->
+
+                    <div class="footer-column">
+
+                        <h3>Resources</h3>
+
+                        <ul>
+
+                            <li><a href="#">Exam Notices</a></li>
+
+                            <li><a href="#">Announcements</a></li>
+
+                            <li><a href="#">Campus Map</a></li>
+
+                            <li><a href="#">FAQ</a></li>
+
+                            <li><a href="#">Support</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Contact -->
+
+                    <div class="footer-column">
+
+                        <h3>Contact</h3>
+
+                        <ul>
+
+                            <li>📍 Yangon, Myanmar</li>
+
+                            <li>📧 support@campuscare.com</li>
+
+                            <li>📞 +95 9 123456789</li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Newsletter -->
+
+                    <div class="footer-column">
+
+                        <h3>Newsletter</h3>
+
+                        <p>
+
+                            Subscribe to receive latest campus news and announcements.
+
+                        </p>
+
+                        <form class="newsletter-form">
+
+                            <input type="email" placeholder="Your Email">
+
+                            <button type="submit">
+
+                                Subscribe
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="footer-bottom">
+
+                    <p>
+
+                        © 2026 CampusCare.
+                        All Rights Reserved.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <div class="search-overlay" id="searchOverlay" aria-hidden="true">
+        <button type="button" class="search-overlay-backdrop" id="searchBackdrop" aria-label="Close search"></button>
+
+        <section class="search-dialog glass" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+            <div class="search-dialog-header">
+                <div>
+                    <p>Campus Search</p>
+                    <h2 id="searchTitle">What are you looking for?</h2>
+                </div>
+
+                <button type="button" class="search-close-button" id="searchCloseButton" aria-label="Close search">
+                    ×
+                </button>
+            </div>
+
+            <form class="search-form" id="searchForm">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor"
+                        stroke-width="1.9" stroke-linecap="round" />
+                </svg>
+
+                <input type="search" id="searchInput" placeholder="Search news, events, scholarships or notices..."
+                    autocomplete="off" />
+
+                <button type="submit">Search</button>
+            </form>
+
+            <div class="search-suggestions">
+                <span>Popular searches</span>
+                <button type="button">Exam</button>
+                <button type="button">Scholarship</button>
+                <button type="button">Seminar</button>
+                <button type="button">Football</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="./js/public/home.js" defer></script>
+</body>
+
+</html>

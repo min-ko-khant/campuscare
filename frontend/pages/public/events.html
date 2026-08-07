@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Campus Events | CampusCare</title>
+
+    <link rel="stylesheet" href="../../css/output.css">
+
+    <link rel="stylesheet" href="../../css/global.css">
+
+    <link rel="stylesheet" href="../../css/pages/events.css">
+</head>
+
+<body>
+
+    <header class="events-page-header">
+        <div class="container events-navbar glass">
+
+            <a href="../../index.html" class="events-brand">
+                <span class="events-brand-icon">🎓</span>
+                <span>CampusCare</span>
+            </a>
+
+            <a href="../../index.html#events" class="events-back-button">
+                ← Back to Home
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="events-page">
+
+            <div class="container">
+
+                <nav class="events-breadcrumb" aria-label="Breadcrumb">
+                    <a href="../../index.html">
+                        Home
+                    </a>
+
+                    <span>/</span>
+
+                    <span>Events</span>
+                </nav>
+
+                <div class="events-page-heading">
+
+                    <span class="events-page-badge">
+                        Upcoming Events
+                    </span>
+
+                    <h1>
+                        Discover What’s Happening on Campus
+                    </h1>
+
+                    <p>
+                        Explore upcoming workshops, seminars, competitions,
+                        training programs and student events across the campus.
+                    </p>
+
+                </div>
+
+                <div class="events-toolbar">
+
+                    <div class="events-search-box">
+
+                        <span aria-hidden="true">🔍</span>
+
+                        <input type="search" id="eventSearchInput" placeholder="Search events..." autocomplete="off"
+                            aria-label="Search events">
+
+                    </div>
+
+                    <select id="eventCategoryFilter" class="events-category-filter"
+                        aria-label="Filter events by category">
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="workshop">
+                            Workshop
+                        </option>
+
+                        <option value="seminar">
+                            Seminar
+                        </option>
+
+                        <option value="competition">
+                            Competition
+                        </option>
+
+                        <option value="sports">
+                            Sports
+                        </option>
+
+                        <option value="training">
+                            Training
+                        </option>
+
+                        <option value="volunteer">
+                            Volunteer
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="events-grid" id="eventsContainer">
+
+                    <div class="events-loading glass">
+                        Loading upcoming events...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="events-footer">
+
+        <div class="container events-footer-content">
+
+            <div>
+                <h2>CampusCare</h2>
+
+                <p>
+                    Smart Campus Communication and
+                    Issue Management Platform.
+                </p>
+            </div>
+
+            <a href="../../index.html">
+                Return to Homepage →
+            </a>
+
+        </div>
+
+        <div class="events-footer-bottom">
+            © 2026 CampusCare. All Rights Reserved.
+        </div>
+
+    </footer>
+
+    <script src="../../js/public/events.js"></script>
+
+</body>
+
+</html>

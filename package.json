@@ -1,0 +1,23 @@
+{
+  "name": "campuscare",
+  "version": "1.0.0",
+  "description": "CampusCare Smart Campus Platform",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "npx @tailwindcss/cli -i ./frontend/css/input.css -o ./frontend/css/output.css --watch",
+    "tailwind:build": "npx @tailwindcss/cli -i ./frontend/css/input.css -o ./frontend/css/output.css --minify"
+  },
+  "keywords": [
+    "campuscare",
+    "smart-campus",
+    "nodejs",
+    "mysql",
+    "tailwindcss"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}
