@@ -7,6 +7,7 @@ const Emergency = {
                 id,
                 title,
                 description,
+                details,
                 level,
                 is_active,
                 created_at
@@ -30,6 +31,7 @@ const Emergency = {
                 id,
                 title,
                 description,
+                details,
                 level,
                 is_active,
                 created_at

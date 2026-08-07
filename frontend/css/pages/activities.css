@@ -1,0 +1,380 @@
+/* ===============================
+   Activities Page
+================================ */
+
+
+.activities-page {
+
+    min-height:100vh;
+
+    padding:120px 0;
+
+    background:#f5f9ff;
+
+}
+
+
+
+/* Back Button */
+
+.back-link {
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:40px;
+
+    color:#2563eb;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+
+.back-link:hover {
+
+    transform:translateX(-5px);
+
+}
+
+
+
+
+/* Title */
+
+.activities-page h1 {
+
+    text-align:center;
+
+    font-size:3rem;
+
+    color:#12345b;
+
+    margin-bottom:50px;
+
+}
+
+
+
+
+/* Grid */
+
+
+#activitiesContainer {
+
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(300px,1fr)
+    );
+
+
+    gap:30px;
+
+
+}
+
+
+
+
+/* Card */
+
+
+.activity-card {
+
+
+    background:white;
+
+    padding:30px;
+
+
+    border-radius:25px;
+
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.08);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+.activity-card:hover {
+
+
+    transform:translateY(-8px);
+
+
+}
+
+
+
+
+.activity-card h2 {
+
+
+    color:#12345b;
+
+    font-size:1.5rem;
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.activity-card p {
+
+
+    color:#64748b;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+/* Button */
+
+
+.activity-card a {
+
+
+    display:inline-flex;
+
+
+    padding:12px 25px;
+
+
+    background:#2563eb;
+
+
+    color:white;
+
+
+    border-radius:12px;
+
+
+    text-decoration:none;
+
+
+    font-weight:700;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.activity-card a:hover {
+
+
+    background:#1d4ed8;
+
+
+}
+
+
+
+
+.loading {
+
+
+    text-align:center;
+
+    color:#64748b;
+
+    font-size:1.2rem;
+
+}
+.activities-page h1 {
+
+    text-align:center;
+
+    font-size:3.2rem;
+
+    font-weight:800;
+
+    color:#12345b;
+
+    margin-bottom:70px;
+
+}
+
+
+#activitiesContainer {
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:30px;
+
+}
+.activity-card {
+
+    background:white;
+
+    padding:35px;
+
+    min-height:260px;
+
+    border-radius:28px;
+
+    box-shadow:
+    0 20px 45px rgba(37,99,235,.12);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+}
+.activity-card a {
+
+    width:max-content;
+
+    margin-top:20px;
+
+    padding:14px 28px;
+
+    background:#2563eb;
+
+    border-radius:14px;
+
+    color:white;
+
+    font-weight:700;
+
+}
+/* Back To Campus Button */
+
+.back-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 12px 24px;
+
+    background: #2563eb;
+
+    color: white;
+
+    border-radius: 14px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    margin-bottom: 50px;
+
+    transition: 0.3s ease;
+
+}
+
+
+
+.back-button:hover {
+
+    background: #1d4ed8;
+
+    transform: translateX(-4px);
+
+}
+.activity-card {
+
+    background:white;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 15px 40px rgba(37,99,235,.12);
+
+}
+
+
+
+.activity-image img {
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+
+
+.activity-content {
+
+    padding:30px;
+
+}
+
+
+
+.activity-category {
+
+    display:inline-block;
+
+    padding:8px 15px;
+
+    background:#e0f2fe;
+
+    color:#2563eb;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.activity-date {
+
+    color:#64748b;
+
+    margin:15px 0;
+
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="CampusCare activity details">
+
+    <title>Activity Details | CampusCare</title>
+
+    <link rel="stylesheet" href="../../css/output.css">
+
+    <link rel="stylesheet" href="../../css/global.css">
+
+    <link rel="stylesheet" href="../../css/pages/activity-details.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         Header
+    ========================== -->
+
+    <header class="activity-page-header">
+        <div class="container activity-navbar glass">
+
+            <a href="../../index.html" class="activity-brand">
+                <span class="activity-brand-icon">
+                    🎓
+                </span>
+
+                <span>
+                    CampusCare
+                </span>
+            </a>
+
+            <a href="./activities.html" class="activity-back-button">
+                ← Back to Activities
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         Main
+    ========================== -->
+
+    <main class="activity-details-page">
+
+        <div class="container">
+
+            <!-- Breadcrumb -->
+
+            <nav class="activity-breadcrumb" aria-label="Breadcrumb">
+                <a href="../../index.html">
+                    Home
+                </a>
+
+                <span>/</span>
+
+                <a href="./activities.html">
+                    Activities
+                </a>
+
+                <span>/</span>
+
+                <span id="activityBreadcrumbTitle">
+                    Activity Details
+                </span>
+            </nav>
+
+
+            <!-- Dynamic Activity Detail -->
+
+            <section id="activityDetailsContainer" class="activity-details-container">
+                <div class="activity-loading glass">
+
+                    <div class="activity-loading-spinner"></div>
+
+                    <p>
+                        Loading activity details...
+                    </p>
+
+                </div>
+            </section>
+
+
+            <!-- =========================
+                 Photo Gallery
+            ========================== -->
+
+            <section class="activity-gallery-section" id="activityGallerySection" hidden>
+
+                <div class="activity-section-heading">
+
+                    <div>
+                        <span class="activity-section-label">
+                            Activity Moments
+                        </span>
+
+                        <h2>
+                            Photo Gallery
+                        </h2>
+
+                        <p>
+                            Explore highlights and memorable moments
+                            from this campus activity.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="activity-gallery-grid" id="activityGalleryContainer">
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 Video Gallery
+            ========================== -->
+
+            <section class="activity-video-section" id="activityVideoSection" hidden>
+
+                <div class="activity-section-heading">
+
+                    <div>
+                        <span class="activity-section-label">
+                            Watch Highlights
+                        </span>
+
+                        <h2>
+                            Activity Videos
+                        </h2>
+
+                        <p>
+                            Watch video highlights and memorable
+                            moments from this activity.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="activity-video-grid" id="activityVideoContainer">
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 Related Activities
+            ========================== -->
+
+            <section class="related-activities-section" id="relatedActivitiesSection" hidden>
+
+                <div class="related-activities-header">
+
+                    <div>
+                        <span class="activity-section-label">
+                            Explore More
+                        </span>
+
+                        <h2>
+                            Related Activities
+                        </h2>
+
+                        <p>
+                            Discover more student activities
+                            happening across campus.
+                        </p>
+                    </div>
+
+                    <a href="./activities.html" class="related-view-all">
+                        View All Activities →
+                    </a>
+
+                </div>
+
+                <div class="related-activities-grid" id="relatedActivitiesContainer">
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         Image Lightbox
+    ========================== -->
+
+    <div class="activity-lightbox" id="activityLightbox" aria-hidden="true">
+
+        <button type="button" class="lightbox-close" id="lightboxCloseButton" aria-label="Close image viewer">
+            ×
+        </button>
+
+        <button type="button" class="lightbox-navigation lightbox-previous" id="lightboxPreviousButton"
+            aria-label="Previous image">
+            ‹
+        </button>
+
+        <div class="lightbox-content">
+
+            <img id="lightboxImage" src="" alt="">
+
+            <div class="lightbox-caption">
+
+                <h3 id="lightboxTitle">
+                </h3>
+
+                <p id="lightboxCounter">
+                </p>
+
+            </div>
+
+        </div>
+
+        <button type="button" class="lightbox-navigation lightbox-next" id="lightboxNextButton" aria-label="Next image">
+            ›
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         Video Modal
+    ========================== -->
+
+    <div class="activity-video-modal" id="activityVideoModal" aria-hidden="true">
+
+        <div class="activity-video-modal-dialog">
+
+            <div class="video-modal-header">
+
+                <h2 id="videoModalTitle">
+                    Activity Video
+                </h2>
+
+                <button type="button" id="videoModalCloseButton" class="video-modal-close" aria-label="Close video">
+                    ×
+                </button>
+
+            </div>
+
+            <div class="video-modal-player">
+
+                <iframe id="activityVideoPlayer" src="" title="Activity video" allow="
+                        accelerometer;
+                        autoplay;
+                        clipboard-write;
+                        encrypted-media;
+                        gyroscope;
+                        picture-in-picture;
+                        web-share
+                    " allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+
+    <footer class="activity-page-footer">
+
+        <div class="container activity-footer-main">
+
+            <div>
+                <h2>
+                    CampusCare
+                </h2>
+
+                <p>
+                    Smart campus communication,
+                    activities and student life platform.
+                </p>
+            </div>
+
+            <div class="activity-footer-links">
+
+                <a href="../../index.html">
+                    Home
+                </a>
+
+                <a href="./activities.html">
+                    Activities
+                </a>
+
+                <a href="./events.html">
+                    Events
+                </a>
+
+                <a href="../../index.html#contact">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="activity-footer-bottom">
+            © 2026 CampusCare. All Rights Reserved.
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <script src="../../js/public/activity-details.js"></script>
+
+</body>
+
+</html>

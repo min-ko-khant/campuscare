@@ -858,16 +858,782 @@ function escapeExamHTML(value) {
 
 loadExamNotices();
 
+/* =====================================
+   Contact & Feedback
+===================================== */
+
+const CONTACT_API_URL =
+    "http://localhost:5000/api/contact";
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const contactForm =
+        document.getElementById("contactForm");
+
+    const messageInput =
+        document.getElementById("contactMessage");
+
+    const messageCount =
+        document.getElementById("contactMessageCount");
+
+
+    if (!contactForm) {
+        return;
+    }
+
+
+    /*
+     * Message character counter
+     */
+
+    messageInput?.addEventListener("input", () => {
+
+        if (!messageCount) {
+            return;
+        }
+
+        messageCount.textContent =
+            `${messageInput.value.length} / 3000`;
+
+    });
+
+
+    /*
+     * Submit contact form
+     */
+
+    contactForm.addEventListener(
+        "submit",
+        handleContactSubmit
+    );
+
+});
+
+
+async function handleContactSubmit(event) {
+
+    event.preventDefault();
+
+
+    const form =
+        event.currentTarget;
+
+
+    const submitButton =
+        document.getElementById(
+            "contactSubmitButton"
+        );
+
+
+    const submitText =
+        document.getElementById(
+            "contactSubmitText"
+        );
+
+
+    const submitArrow =
+        document.getElementById(
+            "contactSubmitArrow"
+        );
+
+
+    const spinner =
+        document.getElementById(
+            "contactSubmitSpinner"
+        );
+
+
+    const statusBox =
+        document.getElementById(
+            "contactFormStatus"
+        );
+
+
+    clearContactErrors();
+
+
+    const formData =
+        new FormData(form);
+
+
+    const contactData = {
+
+        name:
+            String(
+                formData.get("name") || ""
+            ).trim(),
+
+        email:
+            String(
+                formData.get("email") || ""
+            ).trim(),
+
+        phone:
+            String(
+                formData.get("phone") || ""
+            ).trim(),
+
+        subject:
+            String(
+                formData.get("subject") || ""
+            ).trim(),
+
+        message:
+            String(
+                formData.get("message") || ""
+            ).trim()
+
+    };
+
+
+    /*
+     * Frontend Validation
+     */
+
+    const isValid =
+        validateContactForm(contactData);
+
+
+    if (!isValid) {
+
+        showContactStatus(
+            "Please check the highlighted fields.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * Loading state
+     */
+
+    setContactLoading(
+        true,
+        submitButton,
+        submitText,
+        submitArrow,
+        spinner
+    );
+
+
+    if (statusBox) {
+        statusBox.textContent = "";
+        statusBox.className =
+            "contact-form-status";
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                CONTACT_API_URL,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            contactData
+                        )
+                }
+            );
+
+
+        let result = {};
+
+
+        try {
+
+            result =
+                await response.json();
+
+        } catch {
+
+            throw new Error(
+                "The server returned an invalid response."
+            );
+
+        }
+
+
+        if (!response.ok) {
+
+            /*
+             * express-validator errors
+             */
+
+            if (
+                Array.isArray(
+                    result.errors
+                )
+            ) {
+
+                applyBackendContactErrors(
+                    result.errors
+                );
+
+            }
+
+
+            throw new Error(
+                result.message ||
+                getFirstValidationMessage(
+                    result.errors
+                ) ||
+                "Unable to send your message."
+            );
+
+        }
+
+
+        if (!result.success) {
+
+            throw new Error(
+                result.message ||
+                "Unable to send your message."
+            );
+
+        }
+
+
+        /*
+         * Success
+         */
+
+        showContactStatus(
+            result.message ||
+            "Your message has been sent successfully.",
+            "success"
+        );
+
+
+        form.reset();
+
+
+        const messageCount =
+            document.getElementById(
+                "contactMessageCount"
+            );
+
+
+        if (messageCount) {
+
+            messageCount.textContent =
+                "0 / 3000";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Contact form error:",
+            error
+        );
+
+
+        showContactStatus(
+            error.message ||
+            "Unable to send your message. Please try again.",
+            "error"
+        );
+
+    } finally {
+
+        setContactLoading(
+            false,
+            submitButton,
+            submitText,
+            submitArrow,
+            spinner
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   Contact Validation
+===================================== */
+
+function validateContactForm(data) {
+
+    let isValid = true;
+
+
+    if (
+        data.name.length < 2
+    ) {
+
+        setContactFieldError(
+            "contactName",
+            "Please enter your name."
+        );
+
+        isValid = false;
+
+    }
+
+
+    if (
+        !isValidContactEmail(
+            data.email
+        )
+    ) {
+
+        setContactFieldError(
+            "contactEmail",
+            "Please enter a valid email address."
+        );
+
+        isValid = false;
+
+    }
+
+
+    if (
+        data.phone &&
+        !/^[0-9+\-\s()]{7,20}$/.test(
+            data.phone
+        )
+    ) {
+
+        setContactFieldError(
+            "contactPhone",
+            "Please enter a valid phone number."
+        );
+
+        isValid = false;
+
+    }
+
+
+    if (
+        data.subject.length < 3
+    ) {
+
+        setContactFieldError(
+            "contactSubject",
+            "Please enter a subject."
+        );
+
+        isValid = false;
+
+    }
+
+
+    if (
+        data.message.length < 10
+    ) {
+
+        setContactFieldError(
+            "contactMessage",
+            "Message must contain at least 10 characters."
+        );
+
+        isValid = false;
+
+    }
+
+
+    if (
+        data.message.length > 3000
+    ) {
+
+        setContactFieldError(
+            "contactMessage",
+            "Message must not exceed 3000 characters."
+        );
+
+        isValid = false;
+
+    }
+
+
+    return isValid;
+
+}
+
+
+function isValidContactEmail(email) {
+
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(email);
+
+}
+
+
+/* =====================================
+   Field Errors
+===================================== */
+
+function setContactFieldError(
+    fieldId,
+    message
+) {
+
+    const input =
+        document.getElementById(
+            fieldId
+        );
+
+
+    if (!input) {
+        return;
+    }
+
+
+    input.classList.add(
+        "contact-input-error"
+    );
+
+
+    const field =
+        input.closest(
+            ".contact-field"
+        );
+
+
+    const errorElement =
+        field?.querySelector(
+            ".contact-field-error"
+        );
+
+
+    if (errorElement) {
+
+        errorElement.textContent =
+            message;
+
+    }
+
+}
+
+
+function clearContactErrors() {
+
+    document
+        .querySelectorAll(
+            ".contact-input-error"
+        )
+        .forEach(
+            element => {
+
+                element.classList.remove(
+                    "contact-input-error"
+                );
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".contact-field-error"
+        )
+        .forEach(
+            element => {
+
+                element.textContent = "";
+
+            }
+        );
+
+}
+
+
+/* =====================================
+   Backend Validation Errors
+===================================== */
+
+function applyBackendContactErrors(
+    errors
+) {
+
+    const fieldMap = {
+
+        name:
+            "contactName",
+
+        email:
+            "contactEmail",
+
+        phone:
+            "contactPhone",
+
+        subject:
+            "contactSubject",
+
+        message:
+            "contactMessage"
+
+    };
+
+
+    errors.forEach(error => {
+
+        const fieldName =
+            error.path ||
+            error.param;
+
+
+        const elementId =
+            fieldMap[fieldName];
+
+
+        if (!elementId) {
+            return;
+        }
+
+
+        setContactFieldError(
+            elementId,
+            error.msg ||
+            "Invalid value."
+        );
+
+    });
+
+}
+
+
+function getFirstValidationMessage(
+    errors
+) {
+
+    if (
+        !Array.isArray(errors) ||
+        errors.length === 0
+    ) {
+
+        return "";
+
+    }
+
+
+    return (
+        errors[0].msg ||
+        ""
+    );
+
+}
+
+
+/* =====================================
+   Status
+===================================== */
+
+function showContactStatus(
+    message,
+    type
+) {
+
+    const statusBox =
+        document.getElementById(
+            "contactFormStatus"
+        );
+
+
+    if (!statusBox) {
+        return;
+    }
+
+
+    statusBox.textContent =
+        message;
+
+
+    statusBox.className =
+        `contact-form-status ${type}`;
+
+
+    /*
+     * Success message only:
+     * automatically remove later.
+     */
+
+    if (
+        type === "success"
+    ) {
+
+        setTimeout(() => {
+
+            statusBox.textContent =
+                "";
+
+            statusBox.className =
+                "contact-form-status";
+
+        }, 7000);
+
+    }
+
+}
+
+
+/* =====================================
+   Loading State
+===================================== */
+
+function setContactLoading(
+    loading,
+    button,
+    text,
+    arrow,
+    spinner
+) {
+
+    if (button) {
+
+        button.disabled =
+            loading;
+
+        button.classList.toggle(
+            "loading",
+            loading
+        );
+
+    }
+
+
+    if (text) {
+
+        text.textContent =
+            loading
+                ? "Sending..."
+                : "Send Message";
+
+    }
+
+
+    if (arrow) {
+
+        arrow.style.display =
+            loading
+                ? "none"
+                : "inline";
+
+    }
+
+
+    if (spinner) {
+
+        spinner.style.display =
+            loading
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+/* ==========================================
+   FAQ Accordion
+========================================== */
+
+document.addEventListener("DOMContentLoaded", initializeFAQ);
+
+function initializeFAQ() {
+
+    const faqItems =
+        document.querySelectorAll(".faq-item");
+
+    if (!faqItems.length) return;
+
+    faqItems.forEach((item) => {
+
+        const button =
+            item.querySelector(".faq-question");
+
+        if (!button) return;
+
+        button.addEventListener(
+            "click",
+            () => toggleFAQ(item)
+        );
+
+        button.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    toggleFAQ(item);
+
+                }
+
+            }
+        );
+
+    });
+
+}
+
+function toggleFAQ(selectedItem) {
+
+    const allItems =
+        document.querySelectorAll(".faq-item");
+
+    const isOpen =
+        selectedItem.classList.contains("active");
+
+    allItems.forEach((item) => {
+
+        item.classList.remove("active");
+
+        const button =
+            item.querySelector(".faq-question");
+
+        if (button) {
+
+            button.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    });
+
+    if (!isOpen) {
+
+        selectedItem.classList.add("active");
+
+        const button =
+            selectedItem.querySelector(".faq-question");
+
+        if (button) {
+
+            button.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+        }
+
+    }
+
+}
 /* ===========================
    Emergency Notice
 =========================== */
-
 const EMERGENCY_API_URL =
     "http://localhost:5000/api/emergencies";
-
 async function loadEmergencyNotice() {
-    const banner =
-        document.getElementById("emergencyBanner");
 
     const levelElement =
         document.getElementById("emergencyLevel");
@@ -878,69 +1644,81 @@ async function loadEmergencyNotice() {
     const descriptionElement =
         document.getElementById("emergencyDescription");
 
-    const detailsButton =
+    const buttonElement =
         document.getElementById("emergencyDetailsButton");
 
-    if (
-        !banner ||
-        !levelElement ||
-        !titleElement ||
-        !descriptionElement ||
-        !detailsButton
-    ) {
-        return;
-    }
+
+    if (!titleElement) return;
+
 
     try {
-        const response = await fetch(EMERGENCY_API_URL);
 
-        if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
-        }
+        const response =
+            await fetch(EMERGENCY_API_URL);
 
-        const result = await response.json();
+
+        const result =
+            await response.json();
+
 
         if (!result.success || !Array.isArray(result.data)) {
-            throw new Error("Invalid emergency response");
+            throw new Error("Invalid emergency data");
         }
 
+
         if (result.data.length === 0) {
-            banner.style.display = "none";
+
+            levelElement.textContent =
+                "No Emergency";
+
+            titleElement.textContent =
+                "No active emergency notice";
+
+            descriptionElement.textContent =
+                "There are currently no emergency updates.";
+
+            buttonElement.style.display = "none";
+
             return;
         }
 
-        const emergency = result.data[0];
 
-        banner.style.display = "flex";
+
+        const emergency =
+            result.data[0];
+
 
         levelElement.textContent =
-            `${emergency.level || "Medium"} Priority`;
+            emergency.level || "Emergency";
+
 
         titleElement.textContent =
             emergency.title;
 
-        descriptionElement.textContent =
-            emergency.description ||
-            "Please follow the latest campus safety instructions.";
 
-        detailsButton.href =
+        descriptionElement.textContent =
+            emergency.description;
+
+
+        buttonElement.href =
             `./pages/public/emergency-details.html?id=${emergency.id}`;
 
-        banner.dataset.level =
-            String(emergency.level || "Medium").toLowerCase();
-    } catch (error) {
-        console.error("Load emergency notice error:", error);
 
-        levelElement.textContent = "Emergency Notice";
+
+    } catch (error) {
+
+        console.error(
+            "Emergency load error:",
+            error
+        );
+
 
         titleElement.textContent =
-            "Unable to Load Emergency Notice";
+            "Unable to load emergency notice";
 
-        descriptionElement.textContent =
-            "Please check the backend connection and try again.";
-
-        detailsButton.style.display = "none";
     }
+
 }
+
 
 loadEmergencyNotice();

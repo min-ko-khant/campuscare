@@ -1,0 +1,159 @@
+.emergency-detail-page{
+
+padding:120px 0;
+
+background:#f5f9ff;
+
+min-height:100vh;
+
+}
+
+
+.back-link{
+
+color:#2563eb;
+
+font-weight:700;
+
+text-decoration:none;
+
+}
+
+
+
+.emergency-detail-card{
+
+margin-top:30px;
+
+padding:45px;
+
+border-radius:30px;
+
+background:white;
+
+}
+
+
+
+.priority-badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:30px;
+
+font-weight:700;
+
+margin-bottom:20px;
+
+}
+
+
+.priority-badge.high{
+
+background:#fee2e2;
+
+color:#dc2626;
+
+}
+
+
+.priority-badge.medium{
+
+background:#fef3c7;
+
+color:#d97706;
+
+}
+
+
+.priority-badge.low{
+
+background:#dcfce7;
+
+color:#16a34a;
+
+}
+
+
+
+.emergency-detail-card h1{
+
+font-size:2.5rem;
+
+color:#12345b;
+
+}
+
+
+
+.emergency-meta{
+
+display:flex;
+
+gap:25px;
+
+margin:20px 0;
+
+color:#64748b;
+
+}
+
+
+
+.emergency-detail-card p{
+
+line-height:1.8;
+
+color:#475569;
+
+}
+
+
+
+.emergency-contact{
+
+margin-top:35px;
+
+padding:25px;
+
+border-radius:20px;
+
+background:#eff6ff;
+
+}
+
+
+
+.emergency-contact a{
+
+color:#2563eb;
+
+font-weight:600;
+
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 22px;
+
+    background: #2563eb;
+    color: white;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: 0.3s ease;
+}
+
+
+.back-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
