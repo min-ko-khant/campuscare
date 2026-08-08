@@ -113,9 +113,10 @@ document.addEventListener(
                         if (item.type === "exam") {
 
                             link =
-                                "./pages/public/exam-details.html?id="
-                                + item.id;
-
+                                "./pages/public/exam-details.html?title="
+                                + encodeURIComponent(item.title)
+                                + "&description="
+                                + encodeURIComponent(item.description);
                         }
 
 

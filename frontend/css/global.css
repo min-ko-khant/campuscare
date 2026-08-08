@@ -438,3 +438,74 @@ background:#2563eb;
 color:white;
 
 }
+/* Exam Detail Page */
+
+.detail-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 80px auto;
+}
+
+
+.detail-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+
+.detail-card .type {
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.detail-card h1 {
+    margin-top: 20px;
+    font-size: 36px;
+    color: #17375e;
+}
+
+
+.detail-card p {
+    margin-top: 15px;
+    line-height: 1.8;
+    color: #64748b;
+    font-size: 17px;
+}
+
+
+.detail-card a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 25px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+
+.detail-card a:hover {
+    opacity: 0.85;
+}
+.back-btn {
+    margin-bottom: 25px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+
+.back-btn:hover {
+    opacity: 0.85;
+}
