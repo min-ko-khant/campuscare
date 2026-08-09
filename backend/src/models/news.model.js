@@ -1,8 +1,8 @@
-const db = require("../config/db");
+const db = require('../config/db');
 
 const News = {
-    getAll(callback) {
-        const sql = `
+  getAll(callback) {
+    const sql = `
             SELECT
                 id,
                 title,
@@ -21,11 +21,11 @@ const News = {
             ORDER BY created_at DESC
         `;
 
-        db.query(sql, callback);
-    },
+    db.query(sql, callback);
+  },
 
-    getById(id, callback) {
-        const sql = `
+  getById(id, callback) {
+    const sql = `
             SELECT
                 id,
                 title,
@@ -45,8 +45,8 @@ const News = {
             LIMIT 1
         `;
 
-        db.query(sql, [id], callback);
-    }
+    db.query(sql, [id], callback);
+  },
 };
 
 module.exports = News;

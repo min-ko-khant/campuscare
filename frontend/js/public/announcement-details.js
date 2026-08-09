@@ -1,58 +1,24 @@
-const params =
-    new URLSearchParams(
-        window.location.search
-    );
+const params = new URLSearchParams(window.location.search);
 
+const id = params.get('id');
 
-const id =
-    params.get("id");
+const API = `http://localhost:5000/api/announcements/${id}`;
 
-
-
-const API =
-    `http://localhost:5000/api/announcements/${id}`;
-
-
-
-const container =
-    document.getElementById(
-        "announcementDetailsContainer"
-    );
-
-
+const container = document.getElementById('announcementDetailsContainer');
 
 async function loadAnnouncementDetail() {
+  try {
+    const response = await fetch(API);
 
+    const result = await response.json();
 
-    try {
+    if (!result.success) {
+      throw new Error('Announcement not found');
+    }
 
+    const announcement = result.data;
 
-        const response =
-            await fetch(API);
-
-
-
-        const result =
-            await response.json();
-
-
-
-        if (!result.success) {
-
-            throw new Error(
-                "Announcement not found"
-            );
-
-        }
-
-
-
-        const announcement =
-            result.data;
-
-
-
-        container.innerHTML = `
+    container.innerHTML = `
 
 
 
@@ -88,8 +54,7 @@ ${announcement.title}
 
 <p class="announcement-description">
 
-${announcement.description ||
-            "No description available."}
+${announcement.description || 'No description available.'}
 
 </p>
 
@@ -157,17 +122,10 @@ ${formatDate(announcement.created_at)}
 
 
 `;
+  } catch (error) {
+    console.error(error);
 
-
-
-    }
-    catch (error) {
-
-
-        console.error(error);
-
-
-        container.innerHTML = `
+    container.innerHTML = `
 
 <h2>
 Unable to load announcement
@@ -178,49 +136,25 @@ Please check backend server.
 </p>
 
 `;
-
-
-    }
-
-
+  }
 }
-
-
-
 
 function formatDate(date) {
+  if (!date) return 'No date';
 
+  return new Date(date).toLocaleDateString(
+    'en-US',
 
-    if (!date)
+    {
+      day: '2-digit',
 
-        return "No date";
+      month: 'short',
 
+      year: 'numeric',
 
-
-    return new Date(date)
-
-        .toLocaleDateString(
-
-            "en-US",
-
-            {
-
-                day: "2-digit",
-
-                month: "short",
-
-                year: "numeric",
-
-                timeZone: "Asia/Yangon"
-
-            }
-
-        );
-
-
+      timeZone: 'Asia/Yangon',
+    }
+  );
 }
-
-
-
 
 loadAnnouncementDetail();

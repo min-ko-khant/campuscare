@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login | CampusCare</title>
+    <link rel="stylesheet" href="../../css/auth.css">
+</head>
+
+<body>
+    <main class="auth-page">
+        <!-- Left Side -->
+        <section class="auth-intro">
+            <div class="university-brand">
+                <div class="university-logo">
+                    <img src="../../assets/icons/logo.jpg" alt="Polytechnic University Maubin Logo">
+                </div>
+
+                <div>
+                    <h2>Polytechnic University</h2>
+                    <p>Maubin</p>
+                </div>
+            </div>
+
+            <div class="welcome-content">
+                <p class="welcome-small">Welcome to</p>
+
+                <h1>
+                    Polytechnic University<br />
+                    Maubin
+                </h1>
+
+                <p class="tagline">
+                    Learn &nbsp;•&nbsp; Innovate &nbsp;•&nbsp; Succeed
+                </p>
+
+                <p class="description">
+                    Your gateway to academic resources, campus updates, events,
+                    scholarships and more. All in one place.
+                </p>
+            </div>
+        </section>
+
+        <!-- Right Side -->
+        <section class="auth-container">
+            <div class="auth-card">
+                <!-- Login / Register Tabs -->
+                <div class="auth-tabs">
+                    <a href="login.html" class="auth-tab active"> Login </a>
+
+                    <a href="register.html" class="auth-tab"> Register </a>
+                </div>
+
+                <div class="auth-header">
+                    <h2>Welcome Back! 👋</h2>
+                    <p>Sign in to continue to your account</p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+
+                        <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email"
+                            required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="Enter your password"
+                                autocomplete="current-password" required />
+
+                            <button type="button" id="togglePassword" class="password-toggle"
+                                aria-label="Show password">
+                                Show
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe" name="rememberMe" />
+                            <span>Remember me</span>
+                        </label>
+
+                        <a href="forgot-password.html"> Forgot Password? </a>
+                    </div>
+
+                    <!-- Error / Success Message -->
+                    <div id="loginMessage" class="form-message" role="alert" aria-live="polite"></div>
+
+                    <button type="submit" id="loginButton" class="login-button">
+                        <span id="loginButtonText"> Login </span>
+                    </button>
+                </form>
+
+                <div class="register-link">
+                    <span>Don't have an account?</span>
+                    <a href="register.html">Register</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../../js/auth/login.js"></script>
+</body>
+
+</html>

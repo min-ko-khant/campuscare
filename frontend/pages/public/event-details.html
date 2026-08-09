@@ -1,180 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description" content="CampusCare campus event details">
+    <meta name="description" content="CampusCare campus event details" />
 
     <title>Event Details | CampusCare</title>
 
-    <link rel="stylesheet" href="../../css/output.css">
+    <link rel="stylesheet" href="../../css/output.css" />
 
-    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/global.css" />
 
-    <link rel="stylesheet" href="../../css/pages/event-details.css">
+    <link rel="stylesheet" href="../../css/pages/event-details.css" />
 </head>
 
 <body>
-
     <!-- =====================================
          Top Navigation
     ====================================== -->
 
     <header class="event-page-header">
         <div class="container event-navbar glass">
-
             <a href="../../index.html" class="event-brand">
-                <span class="event-brand-icon">
-                    🎓
-                </span>
+                <span class="event-brand-icon"> 🎓 </span>
 
-                <span>
-                    CampusCare
-                </span>
+                <span> CampusCare </span>
             </a>
 
-            <a href="./events.html" class="event-back-top">
-                ← Back to Events
-            </a>
-
+            <a href="./events.html" class="event-back-top"> ← Back to Events </a>
         </div>
     </header>
-
 
     <!-- =====================================
          Main
     ====================================== -->
 
     <main class="event-details-page">
-
         <div class="container">
-
             <!-- Breadcrumb -->
 
             <nav class="event-breadcrumb" aria-label="Breadcrumb">
-                <a href="../../index.html">
-                    Home
-                </a>
+                <a href="../../index.html"> Home </a>
 
                 <span>/</span>
 
-                <a href="./events.html">
-                    Events
-                </a>
+                <a href="./events.html"> Events </a>
 
                 <span>/</span>
 
-                <span id="breadcrumbTitle">
-                    Event Details
-                </span>
+                <span id="breadcrumbTitle"> Event Details </span>
             </nav>
-
 
             <!-- Dynamic Event -->
 
             <div class="event-details-container" id="eventDetails">
                 <div class="event-loading glass">
-
                     <div class="loading-spinner"></div>
 
-                    <p>
-                        Loading event information...
-                    </p>
-
+                    <p>Loading event information...</p>
                 </div>
             </div>
-
 
             <!-- Related Events -->
 
             <section class="related-events-section" id="relatedEventsSection" hidden>
-
                 <div class="related-events-header">
-
                     <div>
-                        <span class="related-label">
-                            Discover More
-                        </span>
+                        <span class="related-label"> Discover More </span>
 
-                        <h2>
-                            Related Events
-                        </h2>
+                        <h2>Related Events</h2>
 
-                        <p>
-                            You may also be interested in these
-                            upcoming campus events.
-                        </p>
+                        <p>You may also be interested in these upcoming campus events.</p>
                     </div>
 
                     <a href="./events.html" class="view-all-related">
                         View All Events →
                     </a>
-
                 </div>
 
-                <div class="related-events-grid" id="relatedEventsContainer">
-                </div>
-
+                <div class="related-events-grid" id="relatedEventsContainer"></div>
             </section>
-
         </div>
-
     </main>
-
 
     <!-- =====================================
          Footer
     ====================================== -->
 
     <footer class="event-page-footer">
-
         <div class="container event-footer-main">
-
             <div>
-                <h2>
-                    CampusCare
-                </h2>
+                <h2>CampusCare</h2>
 
-                <p>
-                    Smart campus communication and
-                    information platform.
-                </p>
+                <p>Smart campus communication and information platform.</p>
             </div>
 
             <div class="event-footer-links">
+                <a href="../../index.html"> Home </a>
 
-                <a href="../../index.html">
-                    Home
-                </a>
+                <a href="./events.html"> Events </a>
 
-                <a href="./events.html">
-                    Events
-                </a>
+                <a href="../../index.html#news"> News </a>
 
-                <a href="../../index.html#news">
-                    News
-                </a>
-
-                <a href="../../index.html#contact">
-                    Contact
-                </a>
-
+                <a href="../../index.html#contact"> Contact </a>
             </div>
-
         </div>
 
         <div class="event-footer-bottom">
             © 2026 CampusCare. All Rights Reserved.
         </div>
-
     </footer>
 
-
     <script src="../../js/public/event-details.js"></script>
-
 </body>
 
 </html>

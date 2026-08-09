@@ -1,63 +1,63 @@
-const NEWS_API_URL = "http://localhost:5000/api/news";
+const NEWS_API_URL = 'http://localhost:5000/api/news';
 
-document.addEventListener("DOMContentLoaded", () => {
-    loadAllNews();
+document.addEventListener('DOMContentLoaded', () => {
+  loadAllNews();
 });
 
 async function loadAllNews() {
-    const container = document.getElementById("newsContainer");
+  const container = document.getElementById('newsContainer');
 
-    if (!container) {
-        console.error("newsContainer not found");
-        return;
+  if (!container) {
+    console.error('newsContainer not found');
+    return;
+  }
+
+  try {
+    const response = await fetch(NEWS_API_URL);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
     }
 
-    try {
-        const response = await fetch(NEWS_API_URL);
+    const result = await response.json();
 
-        if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
-        }
+    if (!result.success || !Array.isArray(result.data)) {
+      throw new Error('Invalid news response');
+    }
 
-        const result = await response.json();
-
-        if (!result.success || !Array.isArray(result.data)) {
-            throw new Error("Invalid news response");
-        }
-
-        if (result.data.length === 0) {
-            container.innerHTML = `
+    if (result.data.length === 0) {
+      container.innerHTML = `
                 <div class="news-empty glass">
                     <h2>No News Available</h2>
                     <p>Latest campus news will appear here.</p>
                 </div>
             `;
-            return;
-        }
+      return;
+    }
 
-        container.innerHTML = result.data
-            .map((news) => createNewsCard(news))
-            .join("");
-    } catch (error) {
-        console.error("Load news error:", error);
+    container.innerHTML = result.data
+      .map((news) => createNewsCard(news))
+      .join('');
+  } catch (error) {
+    console.error('Load news error:', error);
 
-        container.innerHTML = `
+    container.innerHTML = `
             <div class="news-error glass">
                 <h2>Unable to Load News</h2>
                 <p>Please check the backend server and try again.</p>
             </div>
         `;
-    }
+  }
 }
 
 function createNewsCard(news) {
-    const imagePath = news.image
-        ? `../../assets/images/news/${news.image}`
-        : "../../assets/images/news/default-news.jpg";
+  const imagePath = news.image
+    ? `../../assets/images/news/${news.image}`
+    : '../../assets/images/news/default-news.jpg';
 
-    const publishedDate = formatNewsDate(news.created_at);
+  const publishedDate = formatNewsDate(news.created_at);
 
-    return `
+  return `
         <article class="news-card glass">
 
             <div class="news-image">
@@ -69,7 +69,7 @@ function createNewsCard(news) {
                 />
 
                 <span class="news-category">
-                    ${escapeHTML(news.category || "Campus")}
+                    ${escapeHTML(news.category || 'Campus')}
                 </span>
             </div>
 
@@ -84,9 +84,7 @@ function createNewsCard(news) {
                 </h3>
 
                 <p>
-                    ${escapeHTML(
-        news.summary || "No summary available."
-    )}
+                    ${escapeHTML(news.summary || 'No summary available.')}
                 </p>
 
                 <div class="news-footer">
@@ -112,24 +110,24 @@ function createNewsCard(news) {
 }
 
 function formatNewsDate(value) {
-    const date = new Date(value);
+  const date = new Date(value);
 
-    if (Number.isNaN(date.getTime())) {
-        return "Unknown date";
-    }
+  if (Number.isNaN(date.getTime())) {
+    return 'Unknown date';
+  }
 
-    return date.toLocaleDateString("en-US", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric"
-    });
+  return date.toLocaleDateString('en-US', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  });
 }
 
 function escapeHTML(value) {
-    return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 }

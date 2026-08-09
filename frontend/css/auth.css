@@ -1,0 +1,666 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  color: #ffffff;
+
+  background:
+    linear-gradient(rgba(6, 28, 52, 0.48), rgba(6, 28, 52, 0.62)),
+    url('../assets/images/hero/maubin-campus.jpg') center / cover no-repeat
+      fixed;
+}
+
+a {
+  color: #7db6ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 50px;
+  align-items: center;
+
+  padding: 48px 6%;
+}
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.auth-intro {
+  max-width: 650px;
+}
+
+.university-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 90px;
+}
+
+.university-logo {
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  /* old circle design မလိုတော့ဘူး */
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.university-logo img {
+  width: 64px;
+  height: 64px;
+
+  object-fit: contain;
+  display: block;
+
+  /* logo ကို သေးသွားစေတဲ့ padding မထားဘူး */
+  padding: 0;
+
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.university-brand h2 {
+  font-size: 18px;
+}
+
+.university-brand p {
+  opacity: 0.8;
+  margin-top: 3px;
+}
+
+.welcome-small {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.welcome-content h1 {
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.tagline {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.description {
+  max-width: 470px;
+
+  line-height: 1.8;
+  font-size: 16px;
+
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.auth-container {
+  width: 100%;
+}
+
+.auth-card {
+  width: 100%;
+
+  padding: 28px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.13);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Tabs */
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  padding: 5px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  margin-bottom: 32px;
+}
+
+.auth-tab {
+  text-align: center;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+}
+
+.auth-tab:hover {
+  text-decoration: none;
+}
+
+.auth-tab.active {
+  background: rgba(255, 255, 255, 0.85);
+  color: #1d4ed8;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-header h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.auth-header p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Form */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: white;
+
+  font-size: 15px;
+
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.form-group input:focus {
+  border-color: #7db6ff;
+
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.form-group select {
+  width: 100%;
+  padding: 14px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  font-size: 15px;
+  outline: none;
+}
+
+.form-group select:focus {
+  border-color: #7db6ff;
+
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.form-group select option {
+  color: #111827;
+}
+
+/* Password */
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 75px;
+}
+
+.password-toggle {
+  position: absolute;
+
+  right: 10px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border: none;
+  background: none;
+
+  color: #9bc7ff;
+
+  cursor: pointer;
+}
+
+/* Options */
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin: 4px 0 22px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+}
+
+.remember-me input {
+  width: auto;
+}
+
+/* Message */
+
+.form-message {
+  min-height: 22px;
+
+  margin-bottom: 12px;
+
+  text-align: center;
+  font-size: 14px;
+}
+
+.form-message.error {
+  color: #fecaca;
+}
+
+.form-message.success {
+  color: #bbf7d0;
+}
+
+/* Login button */
+
+.login-button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.login-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Register link */
+
+.register-link {
+  margin-top: 26px;
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.register-link a {
+  margin-left: 5px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+
+    justify-items: center;
+
+    padding: 30px 20px;
+  }
+
+  .auth-intro {
+    display: none;
+  }
+
+  .auth-container {
+    max-width: 480px;
+  }
+
+  .auth-card {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 520px) {
+  .auth-page {
+    padding: 18px;
+  }
+
+  .auth-card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .auth-header h2 {
+    font-size: 24px;
+  }
+
+  .form-options {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* =========================
+   REGISTER PAGE
+========================= */
+
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.register-grid .form-group {
+  margin-bottom: 0;
+}
+
+.register-agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 18px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.register-agreement input {
+  margin-top: 3px;
+}
+
+.register-agreement a {
+  color: #8fc1ff;
+}
+
+@media (max-width: 700px) {
+  .register-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   OTP PAGE
+========================= */
+/* OTP - exact screen center */
+body:has(.otp-container) {
+  margin: 0;
+  min-height: 100vh;
+}
+
+body:has(.otp-container) .auth-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  display: block;
+}
+
+.otp-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+  margin: 0;
+
+  /* login/register layout ကနေ inherited ဖြစ်တာတွေ reset */
+  left: auto;
+  right: auto;
+  transform: none;
+}
+
+.otp-card {
+  margin: 0 auto;
+}
+.otp-container {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+}
+
+.otp-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 34px 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.13);
+  transform: translate(-50, -50);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.otp-icon {
+  width: 72px;
+  height: 72px;
+
+  margin: 0 auto 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  font-size: 32px;
+}
+
+.otp-card h1 {
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.otp-subtitle {
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+}
+
+.otp-email {
+  margin-top: 8px;
+  margin-bottom: 26px;
+
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.otp-inputs {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.otp-input {
+  width: 100%;
+  height: 54px;
+
+  text-align: center;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  outline: none;
+}
+
+.otp-input:focus {
+  border-color: #7db6ff;
+
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.otp-verify-button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.otp-resend {
+  margin-top: 22px;
+
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+
+  font-size: 14px;
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.otp-resend button {
+  border: none;
+  background: none;
+
+  color: #7db6ff;
+
+  cursor: pointer;
+}
+
+.otp-expiry {
+  margin-top: 24px;
+
+  font-size: 13px;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.otp-back {
+  display: inline-block;
+
+  margin-top: 20px;
+
+  font-size: 14px;
+}
+
+@media (max-width: 520px) {
+  .otp-card {
+    padding: 28px 20px;
+  }
+
+  .otp-inputs {
+    gap: 6px;
+  }
+
+  .otp-input {
+    height: 48px;
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verify Email | CampusCare</title>
+
+    <link rel="stylesheet" href="../../css/auth.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <div class="auth-overlay"></div>
+
+        <section class="otp-container">
+
+            <div class="otp-card">
+
+                <div class="otp-icon">
+                    ✈
+                </div>
+
+                <h1>Almost There!</h1>
+
+                <p class="otp-subtitle">
+                    Enter the verification code<br>
+                    we sent to your email.
+                </p>
+
+                <p id="otpEmail" class="otp-email">
+                    student@gmail.com
+                </p>
+
+                <form id="otpForm">
+
+                    <div class="otp-inputs">
+
+                        <input type="text" inputmode="numeric" maxlength="1" class="otp-input"
+                            autocomplete="one-time-code">
+
+                        <input type="text" inputmode="numeric" maxlength="1" class="otp-input">
+
+                        <input type="text" inputmode="numeric" maxlength="1" class="otp-input">
+
+                        <input type="text" inputmode="numeric" maxlength="1" class="otp-input">
+
+                        <input type="text" inputmode="numeric" maxlength="1" class="otp-input">
+
+                        <input type="text" inputmode="numeric" maxlength="1" class="otp-input">
+
+                    </div>
+
+                    <div id="otpMessage" class="form-message" role="alert"></div>
+
+                    <button type="submit" id="verifyButton" class="otp-verify-button">
+                        Verify Code
+                    </button>
+
+                </form>
+
+                <div class="otp-resend">
+
+                    <span>Didn't receive the code?</span>
+
+                    <button type="button" id="resendOtp">
+                        Resend Code
+                    </button>
+
+                </div>
+
+                <div class="otp-expiry">
+                    🔒 This code will expire in 2 minutes.
+                </div>
+
+                <a href="register.html" class="otp-back">
+                    Back to Register
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../../js/auth/otp.js"></script>
+
+</body>
+
+</html>

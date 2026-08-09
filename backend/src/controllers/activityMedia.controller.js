@@ -1,46 +1,34 @@
-const ActivityMedia = require("../models/activityMedia.model");
+const ActivityMedia = require('../models/activityMedia.model');
 const getActivityMedia = (req, res) => {
+  const activityId = Number(req.params.id);
 
-    const activityId = Number(req.params.id);
+  if (!Number.isInteger(activityId) || activityId <= 0) {
+    return res.status(400).json({
+      success: false,
+      message: 'Invalid activity ID',
+    });
+  }
 
-    if (!Number.isInteger(activityId) || activityId <= 0) {
+  ActivityMedia.getByActivityId(activityId, (error, results) => {
+    if (error) {
+      console.error(error);
 
-        return res.status(400).json({
-            success: false,
-            message: "Invalid activity ID"
-        });
-
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to load activity media',
+      });
     }
 
-    ActivityMedia.getByActivityId(activityId, (error, results) => {
+    return res.status(200).json({
+      success: true,
 
-        if (error) {
+      count: results.length,
 
-            console.error(error);
-
-            return res.status(500).json({
-                success: false,
-                message: "Failed to load activity media"
-            });
-
-        }
-
-        return res.status(200).json({
-
-            success: true,
-
-            count: results.length,
-
-            data: results
-
-        });
-
+      data: results,
     });
-
+  });
 };
 
 module.exports = {
-
-    getActivityMedia
-
+  getActivityMedia,
 };

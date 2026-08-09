@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | CampusCare</title>
+</head>
+
+<body>
+    <main>
+        <h1>Student Dashboard</h1>
+        <p>Welcome to CampusCare.</p>
+
+        <div id="studentInfo"></div>
+
+        <button id="logoutButton" type="button">
+            Logout
+        </button>
+    </main>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        // User မရှိရင် login page ပြန်ပို့
+        if (!user) {
+            window.location.href = '../auth/login.html';
+        } else {
+            document.getElementById('studentInfo').innerHTML = `
+        <p>Name: ${user.name}</p>
+        <p>Role: ${user.role}</p>
+      `;
+        }
+
+        document
+            .getElementById('logoutButton')
+            .addEventListener('click', async () => {
+
+                const refreshToken = localStorage.getItem('refreshToken');
+
+                try {
+                    if (refreshToken) {
+                        await fetch('http://localhost:5000/api/auth/logout', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                refreshToken: refreshToken
+                            })
+                        });
+                    }
+                } catch (error) {
+                    console.error('Logout error:', error);
+                } finally {
+                    localStorage.removeItem('accessToken');
+                    localStorage.removeItem('refreshToken');
+                    localStorage.removeItem('user');
+
+                    window.location.href = '../auth/login.html';
+                }
+            });
+    </script>
+</body>
+
+</html>

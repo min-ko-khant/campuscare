@@ -1,69 +1,29 @@
-const API =
-    "http://localhost:5000/api/activities";
+const API = 'http://localhost:5000/api/activities';
 
-
-
-const container =
-    document.getElementById(
-        "activitiesContainer"
-    );
-
-
-
-
+const container = document.getElementById('activitiesContainer');
 
 async function loadActivities() {
-
-
     try {
+        const response = await fetch(API);
 
-
-        const response =
-            await fetch(API);
-
-
-
-        const result =
-            await response.json();
-
-
-
+        const result = await response.json();
 
         if (!result.success) {
-
-            throw new Error(
-                "Failed to load activities"
-            );
-
+            throw new Error('Failed to load activities');
         }
 
+        container.innerHTML = '';
 
+        result.data.forEach((activity) => {
+            const card = document.createElement('div');
 
+            card.className = 'activity-card';
 
-        container.innerHTML = "";
-
-
-
-
-        result.data.forEach(
-            (activity) => {
-
-
-                const card =
-                    document.createElement("div");
-
-
-
-                card.className =
-                    "activity-card";
-
-
-
-                card.innerHTML = `
+            card.innerHTML = `
 
 <div class="activity-image">
 
-<img 
+<img
 src="../../assets/images/activities/${activity.image}"
 alt="${activity.title}"
 >
@@ -75,7 +35,7 @@ alt="${activity.title}"
 
 
 <span class="activity-category">
-${activity.category || "Campus Activity"}
+${activity.category || 'Campus Activity'}
 </span>
 
 
@@ -92,7 +52,7 @@ ${activity.description}
 
 <div class="activity-date">
 
-📅 ${activity.activity_date || ""}
+📅 ${activity.activity_date || ''}
 
 </div>
 
@@ -103,32 +63,14 @@ View Details →
 </a>
 
 
-
 </div>
 
 `;
 
-
-                container.appendChild(card);
-
-
-
-            });
-
-
-    }
-
-
-
-    catch (error) {
-
-
-        console.error(
-            "Activity Error:",
-            error
-        );
-
-
+            container.appendChild(card);
+        });
+    } catch (error) {
+        console.error('Activity Error:', error);
 
         container.innerHTML = `
 
@@ -139,13 +81,7 @@ Unable to load activities.
 </p>
 
 `;
-
     }
-
-
-
 }
-
-
 
 loadActivities();

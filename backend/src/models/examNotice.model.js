@@ -1,8 +1,8 @@
-const db = require("../config/db");
+const db = require('../config/db');
 
 const ExamNotice = {
-    getUpcoming(callback) {
-        const sql = `
+  getUpcoming(callback) {
+    const sql = `
             SELECT
                 id,
                 title,
@@ -17,11 +17,11 @@ const ExamNotice = {
             ORDER BY exam_date ASC, created_at DESC
         `;
 
-        db.query(sql, callback);
-    },
+    db.query(sql, callback);
+  },
 
-    getById(id, callback) {
-        const sql = `
+  getById(id, callback) {
+    const sql = `
             SELECT
                 id,
                 title,
@@ -35,8 +35,8 @@ const ExamNotice = {
             LIMIT 1
         `;
 
-        db.query(sql, [id], callback);
-    }
+    db.query(sql, [id], callback);
+  },
 };
 
 module.exports = ExamNotice;

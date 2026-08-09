@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Register | CampusCare</title>
+
+    <link rel="stylesheet" href="../../css/auth.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <!-- Left Side -->
+        <section class="auth-intro">
+
+            <div class="university-brand">
+
+                <div class="university-logo">
+                    <img src="../../assets/icons/logo.jpg" alt="Polytechnic University Maubin Logo">
+                </div>
+
+                <div>
+                    <h2>Polytechnic University</h2>
+                    <p>Maubin</p>
+                </div>
+
+            </div>
+
+
+            <div class="welcome-content">
+
+                <p class="welcome-small">
+                    Join
+                </p>
+
+                <h1>
+                    CampusCare<br>
+                    Student Portal
+                </h1>
+
+                <p class="tagline">
+                    Verify &nbsp;•&nbsp; Register &nbsp;•&nbsp; Connect
+                </p>
+
+                <p class="description">
+                    Registration is available only for students
+                    whose information matches official university records.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Right Side -->
+        <section class="auth-container">
+
+            <div class="auth-card">
+
+                <div class="auth-tabs">
+
+                    <a href="login.html" class="auth-tab">
+                        Login
+                    </a>
+
+                    <a href="register.html" class="auth-tab active">
+                        Register
+                    </a>
+
+                </div>
+
+
+                <div class="auth-header">
+
+                    <h2>Create Student Account</h2>
+
+                    <p>
+                        Enter your university information
+                    </p>
+
+                </div>
+
+                <form id="registerForm">
+
+                    <div class="register-grid">
+
+                        <!-- Row 1 -->
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Full Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentId">Student ID</label>
+                            <input type="text" id="studentId" name="student_id" placeholder="Student ID" required>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="faculty">Faculty</label>
+                            <select id="faculty" name="faculty" required>
+                                <option value="">Select Faculty</option>
+                                <option value="FC">FC</option>
+                                <option value="FE">FE</option>
+                            </select>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department" name="department" required>
+                                <option value="">Select Department</option>
+
+                                <option value="Computer Science and Technology">
+                                    Computer Science and Technology
+                                </option>
+
+                                <option value="Computer Science">
+                                    Computer Science
+                                </option>
+
+                                <option value="Computer Technology">
+                                    Computer Technology
+                                </option>
+
+                                <option value="Civil Engineering">
+                                    Civil Engineering
+                                </option>
+
+                                <option value="Electronic Engineering">
+                                    Electronic Engineering
+                                </option>
+
+                                <option value="Electrical Power">
+                                    Electrical Power Engineering
+                                </option>
+
+                                <option value="Mechanical Engineering">
+                                    Mechanical Engineering
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="year">Year</label>
+                            <select id="year" name="year" required>
+                                <option value="">Select Year</option>
+                                <option value="1">First Year</option>
+                                <option value="2">Second Year</option>
+                                <option value="3">Third Year</option>
+                                <option value="4">Fourth Year</option>
+                                <option value="5">Fifth Year</option>
+                                <option value="6">Sixth Year</option>
+                            </select>
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+
+                            <div class="password-wrapper">
+                                <input type="password" id="password" name="password" placeholder="Password" required>
+
+                                <button type="button" id="togglePassword" class="password-toggle">
+                                    Show
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+
+                            <div class="password-wrapper">
+                                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+                                <button type="button" id="toggleConfirmPassword" class="password-toggle">
+                                    Show
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <label class="register-agreement">
+                        <input type="checkbox" id="agreeTerms" required>
+
+                        <span>
+                            I agree to the
+                            <a href="#">Terms of Use</a>
+                            and
+                            <a href="#">Privacy Policy</a>.
+                        </span>
+                    </label>
+
+                    <div id="registerMessage" class="form-message" role="alert"></div>
+
+                    <button type="submit" id="registerButton" class="login-button">
+                        Register
+                    </button>
+
+                </form>
+
+
+                <div class="register-link">
+
+                    <span>
+                        Already have an account?
+                    </span>
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../../js/auth/register.js"></script>
+
+</body>
+
+</html>

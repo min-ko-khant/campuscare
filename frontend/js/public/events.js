@@ -1,49 +1,46 @@
-const EVENTS_API_URL = "http://localhost:5000/api/events";
+const EVENTS_API_URL = 'http://localhost:5000/api/events';
 
 let allEvents = [];
 
-document.addEventListener("DOMContentLoaded", () => {
-    const searchInput =
-        document.getElementById("eventSearchInput");
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('eventSearchInput');
 
-    const categoryFilter =
-        document.getElementById("eventCategoryFilter");
+  const categoryFilter = document.getElementById('eventCategoryFilter');
 
-    searchInput?.addEventListener("input", renderFilteredEvents);
-    categoryFilter?.addEventListener("change", renderFilteredEvents);
+  searchInput?.addEventListener('input', renderFilteredEvents);
+  categoryFilter?.addEventListener('change', renderFilteredEvents);
 
-    loadAllEvents();
+  loadAllEvents();
 });
 
 async function loadAllEvents() {
-    const container =
-        document.getElementById("eventsContainer");
+  const container = document.getElementById('eventsContainer');
 
-    if (!container) {
-        console.error("eventsContainer not found");
-        return;
+  if (!container) {
+    console.error('eventsContainer not found');
+    return;
+  }
+
+  try {
+    const response = await fetch(EVENTS_API_URL);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
     }
 
-    try {
-        const response = await fetch(EVENTS_API_URL);
+    const result = await response.json();
 
-        if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
-        }
+    if (!result.success || !Array.isArray(result.data)) {
+      throw new Error('Invalid events response');
+    }
 
-        const result = await response.json();
+    allEvents = result.data;
 
-        if (!result.success || !Array.isArray(result.data)) {
-            throw new Error("Invalid events response");
-        }
+    renderEvents(allEvents);
+  } catch (error) {
+    console.error('Load events error:', error);
 
-        allEvents = result.data;
-
-        renderEvents(allEvents);
-    } catch (error) {
-        console.error("Load events error:", error);
-
-        container.innerHTML = `
+    container.innerHTML = `
             <div class="events-error glass">
                 <h2>Unable to Load Events</h2>
 
@@ -52,60 +49,49 @@ async function loadAllEvents() {
                 </p>
             </div>
         `;
-    }
+  }
 }
 
 function renderFilteredEvents() {
-    const searchValue =
-        document
-            .getElementById("eventSearchInput")
-            ?.value
-            .trim()
-            .toLowerCase() || "";
+  const searchValue =
+    document.getElementById('eventSearchInput')?.value.trim().toLowerCase() ||
+    '';
 
-    const selectedCategory =
-        document
-            .getElementById("eventCategoryFilter")
-            ?.value
-            .toLowerCase() || "all";
+  const selectedCategory =
+    document.getElementById('eventCategoryFilter')?.value.toLowerCase() ||
+    'all';
 
-    const filteredEvents = allEvents.filter((event) => {
-        const title =
-            String(event.title || "").toLowerCase();
+  const filteredEvents = allEvents.filter((event) => {
+    const title = String(event.title || '').toLowerCase();
 
-        const description =
-            String(event.description || "").toLowerCase();
+    const description = String(event.description || '').toLowerCase();
 
-        const location =
-            String(event.location || "").toLowerCase();
+    const location = String(event.location || '').toLowerCase();
 
-        const category =
-            String(event.category || "").toLowerCase();
+    const category = String(event.category || '').toLowerCase();
 
-        const matchesSearch =
-            title.includes(searchValue) ||
-            description.includes(searchValue) ||
-            location.includes(searchValue) ||
-            category.includes(searchValue);
+    const matchesSearch =
+      title.includes(searchValue) ||
+      description.includes(searchValue) ||
+      location.includes(searchValue) ||
+      category.includes(searchValue);
 
-        const matchesCategory =
-            selectedCategory === "all" ||
-            category === selectedCategory;
+    const matchesCategory =
+      selectedCategory === 'all' || category === selectedCategory;
 
-        return matchesSearch && matchesCategory;
-    });
+    return matchesSearch && matchesCategory;
+  });
 
-    renderEvents(filteredEvents);
+  renderEvents(filteredEvents);
 }
 
 function renderEvents(events) {
-    const container =
-        document.getElementById("eventsContainer");
+  const container = document.getElementById('eventsContainer');
 
-    if (!container) return;
+  if (!container) return;
 
-    if (!Array.isArray(events) || events.length === 0) {
-        container.innerHTML = `
+  if (!Array.isArray(events) || events.length === 0) {
+    container.innerHTML = `
             <div class="events-empty glass">
                 <h2>No Events Found</h2>
 
@@ -115,29 +101,24 @@ function renderEvents(events) {
             </div>
         `;
 
-        return;
-    }
+    return;
+  }
 
-    container.innerHTML = events
-        .map((event) => createEventCard(event))
-        .join("");
+  container.innerHTML = events.map((event) => createEventCard(event)).join('');
 }
 
 function createEventCard(event) {
-    const dateParts =
-        formatEventDateParts(event.event_date);
+  const dateParts = formatEventDateParts(event.event_date);
 
-    const startTime =
-        formatEventTime(event.start_time);
+  const startTime = formatEventTime(event.start_time);
 
-    const endTime =
-        formatEventTime(event.end_time);
+  const endTime = formatEventTime(event.end_time);
 
-    const imagePath = event.image
-        ? `../../assets/images/events/${event.image}`
-        : "../../assets/images/events/default-event.jpg";
+  const imagePath = event.image
+    ? `../../assets/images/events/${event.image}`
+    : '../../assets/images/events/default-event.jpg';
 
-    return `
+  return `
         <article class="event-card glass">
 
             <div class="event-date">
@@ -164,7 +145,7 @@ function createEventCard(event) {
                     >
 
                     <span class="event-type">
-                        ${escapeHTML(event.category || "Event")}
+                        ${escapeHTML(event.category || 'Event')}
                     </span>
 
                 </div>
@@ -181,9 +162,8 @@ function createEventCard(event) {
 
                     <p>
                         ${escapeHTML(
-        event.description ||
-        "No description available."
-    )}
+                          event.description || 'No description available.'
+                        )}
                     </p>
 
                     <div class="event-location">
@@ -194,9 +174,8 @@ function createEventCard(event) {
 
                         <span>
                             ${escapeHTML(
-        event.location ||
-        "Location not specified"
-    )}
+                              event.location || 'Location not specified'
+                            )}
                         </span>
 
                     </div>
@@ -221,60 +200,54 @@ function createEventCard(event) {
 }
 
 function formatEventDateParts(value) {
-    const date = new Date(value);
+  const date = new Date(value);
 
-    if (Number.isNaN(date.getTime())) {
-        return {
-            day: "--",
-            month: "---"
-        };
-    }
-
+  if (Number.isNaN(date.getTime())) {
     return {
-        day: date.toLocaleDateString("en-US", {
-            day: "2-digit"
-        }),
-
-        month: date
-            .toLocaleDateString("en-US", {
-                month: "short"
-            })
-            .toUpperCase()
+      day: '--',
+      month: '---',
     };
+  }
+
+  return {
+    day: date.toLocaleDateString('en-US', {
+      day: '2-digit',
+    }),
+
+    month: date
+      .toLocaleDateString('en-US', {
+        month: 'short',
+      })
+      .toUpperCase(),
+  };
 }
 
 function formatEventTime(value) {
-    if (!value) {
-        return "Time not specified";
-    }
+  if (!value) {
+    return 'Time not specified';
+  }
 
-    const [hours, minutes] =
-        String(value).split(":");
+  const [hours, minutes] = String(value).split(':');
 
-    const date = new Date();
+  const date = new Date();
 
-    date.setHours(
-        Number(hours),
-        Number(minutes),
-        0,
-        0
-    );
+  date.setHours(Number(hours), Number(minutes), 0, 0);
 
-    if (Number.isNaN(date.getTime())) {
-        return String(value);
-    }
+  if (Number.isNaN(date.getTime())) {
+    return String(value);
+  }
 
-    return date.toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "2-digit"
-    });
+  return date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+  });
 }
 
 function escapeHTML(value) {
-    return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 }

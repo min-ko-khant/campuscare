@@ -1,8 +1,8 @@
-const db = require("../config/db");
+const db = require('../config/db');
 
 const ActivityMedia = {
-    getByActivityId(activityId, callback) {
-        const sql = `
+  getByActivityId(activityId, callback) {
+    const sql = `
             SELECT
                 id,
                 activity_id,
@@ -17,8 +17,8 @@ const ActivityMedia = {
             ORDER BY display_order ASC, id ASC
         `;
 
-        db.query(sql, [activityId], callback);
-    }
+    db.query(sql, [activityId], callback);
+  },
 };
 
 module.exports = ActivityMedia;
